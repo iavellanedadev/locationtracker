@@ -63,6 +63,8 @@ class MainViewController: UIViewController {
 
 extension MainViewController: LocationUpdateDelegate {
     func update() {
-        
+        DispatchQueue.main.async {
+            self.mainTableView.reloadData()
+        }
     }
 }

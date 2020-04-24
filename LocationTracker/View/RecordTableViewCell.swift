@@ -9,17 +9,18 @@
 import UIKit
 
 class RecordTableViewCell: UITableViewCell {
+    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var latLongLabel: UILabel!
+    
     static let identifier = "RecordTableViewCell"
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    public func setupCellWithData(date: String, startTime: String, latitude: String, longitude: String) {
+        
+        dateLabel.text = date
+        latLongLabel.text = "\(latitude), \(longitude)"
+        timeLabel.text = startTime
+        
     }
 
 }
