@@ -69,7 +69,31 @@ final class CoreManager {
         locationTrack.startTime = location.startTime
         locationTrack.longitude = location.longitude
         locationTrack.latitude = location.latitude
+        locationTrack.date = location.date
         
         saveContext()
+    }
+    
+    func loadData() -> [Location] {
+        var locations = [Location]()
+        
+        let fetch = NSFetchRequest<LocationTrack>(entityName: "LocationTrack")
+        
+        do{
+            let coreTracks = try context.fetch(fetch)
+            
+            for core in coreTracks{
+            
+                guard let startTime = core.startTime, let longitude = core.longitude, let latitude = core.latitude, let date = core.date else { return locations }
+                
+                let location = Location(startTime: startTime, latitude: latitude, longitude: longitude, date: date)
+                locations.append(location)
+            }
+            
+        }catch{
+            print("Could Not Fetch Tracks \(error.localizedDescription)")
+        }
+
+        return locations
     }
 }

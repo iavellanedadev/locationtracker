@@ -12,4 +12,5 @@ struct Location {
     let startTime: String
     let latitude: String
     let longitude: String
+    let date: String
 }

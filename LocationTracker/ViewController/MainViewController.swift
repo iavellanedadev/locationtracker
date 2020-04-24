@@ -13,9 +13,9 @@ class MainViewController: UIViewController {
     @IBOutlet weak var mainTableView: UITableView!
     
     var locationManager = CLLocationManager()
-    var updatesEnabled: Bool!
-    var startTime: DispatchTime!
-    var endTime: DispatchTime!
+    var timer = Timer()
+    var interval: Double = 2*60 //2 minutes
+    var viewModel = LocationViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,35 +29,40 @@ class MainViewController: UIViewController {
         locationManager.delegate = self
 
         setupLocationService()
+        viewModel.loadStoredLocations()
     }
     
     func setupLocationService() {
         locationManager.requestAlwaysAuthorization()
-        locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.startUpdatingLocation()
-        
-        updatesEnabled = true
-        startTime = DispatchTime.now()
     }
     
-    func updateLocationService() {
+    @objc func decreaseLocationRadius() {
+        let currentAccuracy = locationManager.desiredAccuracy
         
-        endTime = DispatchTime.now()
-        let nanoTime = endTime.uptimeNanoseconds - startTime.uptimeNanoseconds
-        let timeInterval = Double(nanoTime) / 1_000_000_000
-        
-        if updatesEnabled {
-            updatesEnabled = false
-            locationManager.stopUpdatingLocation()
-            startTime = DispatchTime.now()
-        }
-        else {
-            if timeInterval >= 120{
-                updatesEnabled = true
-                locationManager.startUpdatingLocation()
-            }
+        switch currentAccuracy {
+            
+        case kCLLocationAccuracyBest:
+            
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+            self.locationManager.distanceFilter = 99999
+            
+        case kCLLocationAccuracyThreeKilometers:
+            
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            self.locationManager.distanceFilter = kCLDistanceFilterNone
+            
+        default:
+            print("Accuracy not Changed")
         }
     }
+    
 }
 
+extension MainViewController: LocationUpdateDelegate {
+    func update() {
+        
+    }
+}

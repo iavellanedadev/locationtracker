@@ -21,11 +21,19 @@ extension MainViewController: CLLocationManagerDelegate {
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-
-        print("didUpdateLocations Called")
-            if let location = locations.last {
-                print("New Location is \(location)")
-                updateLocationService()
+        if let location = locations.last {
+            
+            let accuracy = locationManager.desiredAccuracy
+            
+            if accuracy != kCLLocationAccuracyThreeKilometers {
+                
+                viewModel.saveLocation(location: location)
+                
+                timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(decreaseLocationRadius), userInfo: nil, repeats: false)
+                
+                decreaseLocationRadius()
+                
             }
+        }
     }
 }
