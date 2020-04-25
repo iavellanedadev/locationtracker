@@ -25,7 +25,6 @@ class LocationViewModel {
 
 extension LocationViewModel{
     private func formatLocation(location: CLLocation) -> Location{
-        //var locationTrack = Location()
         let time = location.timestamp
         
         let coordinates = location.coordinate
@@ -52,6 +51,7 @@ extension LocationViewModel {
         let locationTrack = formatLocation(location: location)
         
         CoreManager.shared.saveData(locationTrack)
+        loadStoredLocations()
     }
     
     public func loadStoredLocations()

@@ -29,6 +29,7 @@ class MainViewController: UIViewController {
         locationManager.delegate = self
 
         setupLocationService()
+        viewModel.delegate = self
         viewModel.loadStoredLocations()
     }
     
