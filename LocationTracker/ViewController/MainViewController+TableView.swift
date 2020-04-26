@@ -11,7 +11,6 @@ import UIKit
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
     }
 }
 
@@ -27,8 +26,6 @@ extension MainViewController: UITableViewDataSource {
         cell.setupCellWithData(date: location.date, startTime: location.startTime, latitude: location.latitude, longitude: location.longitude)
         
         return cell
-        
-    
     }
 
 }

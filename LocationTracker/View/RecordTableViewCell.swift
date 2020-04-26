@@ -16,11 +16,9 @@ class RecordTableViewCell: UITableViewCell {
     static let identifier = "RecordTableViewCell"
     
     public func setupCellWithData(date: String, startTime: String, latitude: String, longitude: String) {
-        
         dateLabel.text = date
         latLongLabel.text = "\(latitude), \(longitude)"
         timeLabel.text = startTime
-        
     }
 
 }

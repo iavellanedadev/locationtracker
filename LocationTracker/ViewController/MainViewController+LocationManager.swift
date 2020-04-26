@@ -22,17 +22,12 @@ extension MainViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.last {
-            
             let accuracy = locationManager.desiredAccuracy
             
             if accuracy != kCLLocationAccuracyThreeKilometers {
-                
-                viewModel.saveLocation(location: location)
-                
+                viewModel.saveLocation(coordinates: location)
                 timer = Timer.scheduledTimer(timeInterval: interval, target: self, selector: #selector(decreaseLocationRadius), userInfo: nil, repeats: false)
-                
                 decreaseLocationRadius()
-                
             }
         }
     }
