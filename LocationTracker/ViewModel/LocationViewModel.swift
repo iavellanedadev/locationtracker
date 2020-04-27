@@ -32,13 +32,10 @@ extension LocationViewModel{
         let latitude = coordinates.latitude
         let longitude = coordinates.longitude
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd/MM/yyyy"
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm:ss"
-        let date = dateFormatter.string(from: Date())
-        let startTime = timeFormatter.string(from: time)
+        dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
+        let date = dateFormatter.string(from: time)
         
-        return Location(startTime: startTime, latitude: String(latitude), longitude: String(longitude), date: date)
+        return Location(fromDateTime: date, latitude: String(latitude), longitude: String(longitude), address: address, locationName: "\(city), \(state) \(zip) (\(country))", toDateTime: nil, timeSpent: nil)
     }
     
     private func reverseGeocode(location: CLLocation) {
@@ -49,20 +46,44 @@ extension LocationViewModel{
             case .failure(let error):
                 print("Error Encountered: \(error.localizedDescription)")
             }
-           
         }
+    }
+    
+    private func getDistance(from location: CLLocation, to location2: CLLocation) -> Double{
+        return location.distance(from: location2)
     }
 }
 
 extension LocationViewModel {
     public func saveLocation(coordinates: CLLocation) {
         print("location saved")
+        let lastLocation = CoreManager.shared.loadLastRecord()
         reverseGeocode(location: coordinates)
         
         guard let location = location else { return }
+
+       
+        if let lastLoc = lastLocation, let lastLat = Double(lastLoc.latitude), let lastLong = Double(lastLoc.longitude) {
+                
+                let lastCoordinates = CLLocation(latitude: lastLat, longitude: lastLong)
+                
+                if getDistance(from: coordinates, to: lastCoordinates) > 100 {
+                    //update location with toDateTime and timeSpent
+                    
+                }
+        } else {
+
+            
+            CoreManager.shared.saveData(location)// save new location
+        }
         
-        CoreManager.shared.saveData(location)
         loadStoredLocations()
+
+
+
+
+
+
     }
     
     public func loadStoredLocations() {

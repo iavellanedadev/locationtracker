@@ -9,8 +9,11 @@
 import Foundation
 
 struct Location {
-    let startTime: String
+    let fromDateTime: String
     let latitude: String
     let longitude: String
-    let date: String
+    let address: String
+    let locationName: String
+    let toDateTime: String?
+    let timeSpent: Double?
 }

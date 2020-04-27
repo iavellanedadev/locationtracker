@@ -66,12 +66,46 @@ final class CoreManager {
         guard let entity = NSEntityDescription.entity(forEntityName: "LocationTrack", in: context) else { return }
         let locationTrack = LocationTrack(entity: entity, insertInto: context)
         
-        locationTrack.startTime = location.startTime
+//        locationTrack.startTime = location.startTime
         locationTrack.longitude = location.longitude
         locationTrack.latitude = location.latitude
-        locationTrack.date = location.date
+
         
         saveContext()
+    }
+    
+    func updateData(_ location: Location) {
+        
+    }
+    
+    func loadLastRecord() -> Location? {
+        
+        var location: Location?
+        let fetch = NSFetchRequest<LocationTrack>(entityName: "LocationTrack")
+        let departmentSort = NSSortDescriptor(key: "fromDateTime", ascending: false)
+
+        fetch.sortDescriptors = [departmentSort]
+
+        do {
+            let coreLocations = try context.fetch(fetch)
+            
+            for core in coreLocations {
+                print(core.address)
+                print(core.locationName)
+                
+                guard let fromDateTime = core.fromDateTime, let longitude = core.longitude, let latitude = core.latitude, let address = core.address, let locationName = core.locationName, let toDateTime = core.toDateTime else { return location }
+                
+                location = Location(fromDateTime: fromDateTime.toString() ?? "N/A", latitude: latitude, longitude: longitude, address: address, locationName: locationName, toDateTime: toDateTime.toString() ?? "", timeSpent: core.timeSpent)
+                
+                return location
+
+            }
+        } catch {
+            print("Issue Fetching Last Location Record: \(error.localizedDescription)")
+            return nil
+        }
+        
+        return location
     }
     
     func loadData() -> [Location] {
@@ -80,17 +114,17 @@ final class CoreManager {
         let fetch = NSFetchRequest<LocationTrack>(entityName: "LocationTrack")
         
         do{
-            let coreTracks = try context.fetch(fetch)
+            let coreLocations = try context.fetch(fetch)
             
-            for core in coreTracks{
+            for core in coreLocations{
             
-                guard let startTime = core.startTime, let longitude = core.longitude, let latitude = core.latitude, let date = core.date else { return locations }
+                guard let fromDateTime = core.fromDateTime, let longitude = core.longitude, let latitude = core.latitude, let address = core.address, let locationName = core.locationName, let toDateTime = core.toDateTime else { return locations }
                 
-                let location = Location(startTime: startTime, latitude: latitude, longitude: longitude, date: date)
+                let location = Location(fromDateTime: fromDateTime.toString() ?? "N/A", latitude: latitude, longitude: longitude, address: address, locationName: locationName, toDateTime: toDateTime.toString() ?? "", timeSpent: core.timeSpent)
                 locations.append(location)
             }
             
-        }catch{
+        } catch {
             print("Could Not Fetch Tracks \(error.localizedDescription)")
         }
 

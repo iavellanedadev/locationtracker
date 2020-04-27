@@ -23,7 +23,7 @@ extension MainViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: RecordTableViewCell.identifier) as? RecordTableViewCell else { return UITableViewCell() }
         
         let location = viewModel.locations[indexPath.row]
-        cell.setupCellWithData(date: location.date, startTime: location.startTime, latitude: location.latitude, longitude: location.longitude)
+        cell.setupCellWithData(fromDateTime: location.fromDateTime, latitude: location.latitude, longitude: location.longitude)
         
         return cell
     }

@@ -15,10 +15,10 @@ class RecordTableViewCell: UITableViewCell {
     
     static let identifier = "RecordTableViewCell"
     
-    public func setupCellWithData(date: String, startTime: String, latitude: String, longitude: String) {
-        dateLabel.text = date
+    public func setupCellWithData(fromDateTime: String, latitude: String, longitude: String) {
+        dateLabel.text = fromDateTime
         latLongLabel.text = "\(latitude), \(longitude)"
-        timeLabel.text = startTime
+//        timeLabel.text = ""
     }
 
 }
