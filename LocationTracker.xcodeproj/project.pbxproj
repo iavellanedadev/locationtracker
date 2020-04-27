@@ -21,6 +21,7 @@
 		02734F572453445600E511CC /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F562453445600E511CC /* LocationViewModel.swift */; };
 		02734F592453446100E511CC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F582453446100E511CC /* Location.swift */; };
 		02734F5C24534EF300E511CC /* CoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F5B24534EF300E511CC /* CoreManager.swift */; };
+		02734F692457868E00E511CC /* String+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F682457868E00E511CC /* String+Utility.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		02734F562453445600E511CC /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
 		02734F582453446100E511CC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		02734F5B24534EF300E511CC /* CoreManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreManager.swift; sourceTree = "<group>"; };
+		02734F682457868E00E511CC /* String+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utility.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,8 +95,8 @@
 		02734F1A2452165E00E511CC /* LocationTracker */ = {
 			isa = PBXGroup;
 			children = (
+				02734F672457867F00E511CC /* Utility */,
 				02734F5A24534D5B00E511CC /* Service */,
-				02734F552453381700E511CC /* Utility */,
 				02734F542453380F00E511CC /* ViewController */,
 				02734F52245337FE00E511CC /* View */,
 				02734F51245337F900E511CC /* ViewModel */,
@@ -153,19 +155,20 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		02734F552453381700E511CC /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utility;
-			sourceTree = "<group>";
-		};
 		02734F5A24534D5B00E511CC /* Service */ = {
 			isa = PBXGroup;
 			children = (
 				02734F5B24534EF300E511CC /* CoreManager.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		02734F672457867F00E511CC /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				02734F682457868E00E511CC /* String+Utility.swift */,
+			);
+			path = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,6 +280,7 @@
 				02734F592453446100E511CC /* Location.swift in Sources */,
 				02734F4324521F9C00E511CC /* RecordTableViewCell.swift in Sources */,
 				02734F4124521EA100E511CC /* MainViewController.swift in Sources */,
+				02734F692457868E00E511CC /* String+Utility.swift in Sources */,
 				02734F4F245335FC00E511CC /* MainViewController+LocationManager.swift in Sources */,
 				02734F572453445600E511CC /* LocationViewModel.swift in Sources */,
 			);

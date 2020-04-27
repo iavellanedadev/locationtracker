@@ -62,6 +62,73 @@ final class CoreManager {
         }
     }
     
+    func fetchForDays(days: Int) -> [Location]{
+        
+        var locations = [Location]()
+        let now = Date()
+        
+        let daysAgo = now.addingTimeInterval(TimeInterval(-days*24*60*60))
+        
+        let fetch = NSFetchRequest<LocationTrack>(entityName: "LocationTrack")
+        let dateSort = NSSortDescriptor(key: "date", ascending: false)
+        
+        fetch.sortDescriptors = [dateSort]
+        
+        
+        do{
+            let coreTracks = try context.fetch(fetch)
+            
+            for core in coreTracks{
+                
+                if let date = core.date {
+                    
+                    guard let newDate = date.toDate() else { return locations }
+                    if newDate > daysAgo {
+                        guard let startTime = core.startTime, let longitude = core.longitude, let latitude = core.latitude, let date = core.date else { return locations }
+                        
+                        let location = Location(startTime: startTime, latitude: latitude, longitude: longitude, date: date)
+                        locations.append(location)
+                    }
+                }
+            }
+            
+        }catch{
+            print("Could Not Fetch Tracks \(error.localizedDescription)")
+        }
+        
+        return locations
+    }
+    
+    func removeOldestDays() {
+        let now = Date()
+        
+        let daysAgo = now.addingTimeInterval(TimeInterval(-15*24*60*60))
+        
+        let fetch = NSFetchRequest<LocationTrack>(entityName: "LocationTrack")
+        let dateSort = NSSortDescriptor(key: "date", ascending: false)
+        
+        fetch.sortDescriptors = [dateSort]
+        
+        
+        do{
+            let coreTracks = try context.fetch(fetch)
+            
+            for core in coreTracks{
+                
+                if let date = core.date {
+                    
+                    guard let newDate = date.toDate() else { return }
+                    if newDate > daysAgo {
+                        context.delete(core)
+                    }
+                }
+            }
+            
+        }catch{
+            print("Could Not Fetch Tracks \(error.localizedDescription)")
+        }
+    }
+    
     func saveData(_ location: Location) {
         guard let entity = NSEntityDescription.entity(forEntityName: "LocationTrack", in: context) else { return }
         let locationTrack = LocationTrack(entity: entity, insertInto: context)
