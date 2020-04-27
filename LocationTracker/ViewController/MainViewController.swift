@@ -42,7 +42,7 @@ class MainViewController: UIViewController {
     
     @objc func decreaseLocationRadius() {
         let currentAccuracy = locationManager.desiredAccuracy
-        
+        print("hit decrease")
         switch currentAccuracy {
             
         case kCLLocationAccuracyBest:

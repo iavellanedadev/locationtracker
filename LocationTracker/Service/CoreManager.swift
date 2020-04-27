@@ -66,43 +66,57 @@ final class CoreManager {
         guard let entity = NSEntityDescription.entity(forEntityName: "LocationTrack", in: context) else { return }
         let locationTrack = LocationTrack(entity: entity, insertInto: context)
         
-//        locationTrack.startTime = location.startTime
+        locationTrack.fromDateTime = location.fromDateTime.toDate()
+        locationTrack.address = location.address
+        locationTrack.locationName = location.locationName
         locationTrack.longitude = location.longitude
         locationTrack.latitude = location.latitude
+        print("saving the coredata")
 
-        
         saveContext()
     }
     
-    func updateData(_ location: Location) {
+    func updateData() {
         
+        if let core = fetchLastData(), let fromDateTime = core.fromDateTime{
+            let toDateTime = Date()
+
+            let timeSpent = toDateTime.timeIntervalSince(fromDateTime).toString()
+            
+            core.setValue(toDateTime, forKey: "toDateTime")
+            core.setValue(timeSpent, forKey: "timeSpent")
+            print("updating to coredata")
+            saveContext()
+        }
+
+    }
+    
+    func fetchLastData() -> LocationTrack? {
+        let fetch = NSFetchRequest<LocationTrack>(entityName: "LocationTrack")
+        let departmentSort = NSSortDescriptor(key: "fromDateTime", ascending: false)
+        
+        fetch.sortDescriptors = [departmentSort]
+        
+        do {
+            let coreLocations = try context.fetch(fetch)
+            print("we fetched corelocations!")
+            return coreLocations.first
+        } catch {
+            print("Issue Fetching Last Location Record: \(error.localizedDescription)")
+            return nil
+        }
     }
     
     func loadLastRecord() -> Location? {
         
         var location: Location?
-        let fetch = NSFetchRequest<LocationTrack>(entityName: "LocationTrack")
-        let departmentSort = NSSortDescriptor(key: "fromDateTime", ascending: false)
-
-        fetch.sortDescriptors = [departmentSort]
-
-        do {
-            let coreLocations = try context.fetch(fetch)
+        
+        if let core = fetchLastData() {
+            guard let fromDateTime = core.fromDateTime, let longitude = core.longitude, let latitude = core.latitude, let address = core.address, let locationName = core.locationName, let toDateTime = core.toDateTime else { return location }
             
-            for core in coreLocations {
-                print(core.address)
-                print(core.locationName)
-                
-                guard let fromDateTime = core.fromDateTime, let longitude = core.longitude, let latitude = core.latitude, let address = core.address, let locationName = core.locationName, let toDateTime = core.toDateTime else { return location }
-                
-                location = Location(fromDateTime: fromDateTime.toString() ?? "N/A", latitude: latitude, longitude: longitude, address: address, locationName: locationName, toDateTime: toDateTime.toString() ?? "", timeSpent: core.timeSpent)
-                
-                return location
-
-            }
-        } catch {
-            print("Issue Fetching Last Location Record: \(error.localizedDescription)")
-            return nil
+            location = Location(fromDateTime: fromDateTime.toString() ?? "N/A", latitude: latitude, longitude: longitude, address: address, locationName: locationName, toDateTime: toDateTime.toString() ?? "", timeSpent: core.timeSpent)
+            print("it did stuff!")
+            return location
         }
         
         return location

@@ -22,8 +22,9 @@ class GeoCoder: GetLocationInfo {
     var geoCoder: CLGeocoder = CLGeocoder()
     
     func getInfoFromLocation(location: CLLocation, completion: @escaping GeoCodeCompletionHandler) {
+        print("reverse geocoder")
+
         geoCoder.reverseGeocodeLocation(location){ placemarks, error in
-            
             if let error = error {
                 print("Error with Reverse Geocode: \(error.localizedDescription)")
                 completion(.failure(error))

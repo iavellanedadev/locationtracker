@@ -24,6 +24,7 @@
 		02734F5E2454E92B00E511CC /* GeoCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F5D2454E92B00E511CC /* GeoCoder.swift */; };
 		02734F602456143B00E511CC /* String+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F5F2456143B00E511CC /* String+Utility.swift */; };
 		02734F62245615E800E511CC /* Date+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F61245615E800E511CC /* Date+Utility.swift */; };
+		02734F64245678BA00E511CC /* TimeInterval+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F63245678BA00E511CC /* TimeInterval+Utilities.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		02734F5D2454E92B00E511CC /* GeoCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoCoder.swift; sourceTree = "<group>"; };
 		02734F5F2456143B00E511CC /* String+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utility.swift"; sourceTree = "<group>"; };
 		02734F61245615E800E511CC /* Date+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utility.swift"; sourceTree = "<group>"; };
+		02734F63245678BA00E511CC /* TimeInterval+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Utilities.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -164,6 +166,7 @@
 			children = (
 				02734F5F2456143B00E511CC /* String+Utility.swift */,
 				02734F61245615E800E511CC /* Date+Utility.swift */,
+				02734F63245678BA00E511CC /* TimeInterval+Utilities.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 				02734F45245220B600E511CC /* MainViewController+TableView.swift in Sources */,
 				02734F1C2452165E00E511CC /* AppDelegate.swift in Sources */,
 				02734F1E2452165E00E511CC /* SceneDelegate.swift in Sources */,
+				02734F64245678BA00E511CC /* TimeInterval+Utilities.swift in Sources */,
 				02734F62245615E800E511CC /* Date+Utility.swift in Sources */,
 				02734F5C24534EF300E511CC /* CoreManager.swift in Sources */,
 				02734F592453446100E511CC /* Location.swift in Sources */,
