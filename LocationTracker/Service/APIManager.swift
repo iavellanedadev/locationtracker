@@ -11,11 +11,11 @@ import Foundation
 typealias PostDataHandler = (Result<ResponseMessage, Error>) -> Void
 
 protocol PostData : AnyObject {
-    func postData(_ data: Location, to url: URL, completion: @escaping PostDataHandler)
+    func postData(_ data: Payload, to url: URL, completion: @escaping PostDataHandler)
 }
 
 final class APIManager : PostData {
-    func postData(_ data: Location, to url: URL, completion: @escaping PostDataHandler) {
+    func postData(_ data: Payload, to url: URL, completion: @escaping PostDataHandler) {
         var request = URLRequest(url: url)
         
         do {

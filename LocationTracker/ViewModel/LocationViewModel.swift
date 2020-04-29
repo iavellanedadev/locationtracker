@@ -97,6 +97,20 @@ extension LocationViewModel {
         loadStoredLocations()
     }
     
+//    public func sendPayload() {
+//        guard let location = location, let someUrl = URL(string: "https://blahblahblah.com/testendpoint") else { return }
+//        var payload = Payload(appId: "1024-4", time: Date(), locationData: location)
+//        APIManager().postData(payload, to: someUrl, completion: { [weak self] result in
+//            switch result {
+//            case .success(let responseMsg):
+//                print("Response Message Recieved")
+//            case .failure(let error):
+//                print("Error Posting Payload: \(error.localizedDescription)")
+//            }
+//
+//        })
+//    }
+    
     public func loadStoredLocations() {
         locations = CoreManager.shared.loadData()
     }

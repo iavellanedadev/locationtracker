@@ -27,6 +27,7 @@
 		02734F64245678BA00E511CC /* TimeInterval+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F63245678BA00E511CC /* TimeInterval+Utilities.swift */; };
 		02734F75245A194000E511CC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F74245A194000E511CC /* APIManager.swift */; };
 		02734F77245A1EE000E511CC /* ResponseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F76245A1EE000E511CC /* ResponseMessage.swift */; };
+		02734F79245A32C900E511CC /* Payload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F78245A32C900E511CC /* Payload.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		02734F63245678BA00E511CC /* TimeInterval+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Utilities.swift"; sourceTree = "<group>"; };
 		02734F74245A194000E511CC /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		02734F76245A1EE000E511CC /* ResponseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessage.swift; sourceTree = "<group>"; };
+		02734F78245A32C900E511CC /* Payload.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Payload.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			children = (
 				02734F582453446100E511CC /* Location.swift */,
 				02734F76245A1EE000E511CC /* ResponseMessage.swift */,
+				02734F78245A32C900E511CC /* Payload.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -298,6 +301,7 @@
 				02734F592453446100E511CC /* Location.swift in Sources */,
 				02734F5E2454E92B00E511CC /* GeoCoder.swift in Sources */,
 				02734F4324521F9C00E511CC /* RecordTableViewCell.swift in Sources */,
+				02734F79245A32C900E511CC /* Payload.swift in Sources */,
 				02734F4124521EA100E511CC /* MainViewController.swift in Sources */,
 				02734F602456143B00E511CC /* String+Utility.swift in Sources */,
 				02734F75245A194000E511CC /* APIManager.swift in Sources */,
