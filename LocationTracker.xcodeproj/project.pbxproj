@@ -25,6 +25,8 @@
 		02734F602456143B00E511CC /* String+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F5F2456143B00E511CC /* String+Utility.swift */; };
 		02734F62245615E800E511CC /* Date+Utility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F61245615E800E511CC /* Date+Utility.swift */; };
 		02734F64245678BA00E511CC /* TimeInterval+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F63245678BA00E511CC /* TimeInterval+Utilities.swift */; };
+		02734F75245A194000E511CC /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F74245A194000E511CC /* APIManager.swift */; };
+		02734F77245A1EE000E511CC /* ResponseMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 02734F76245A1EE000E511CC /* ResponseMessage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,8 @@
 		02734F5F2456143B00E511CC /* String+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utility.swift"; sourceTree = "<group>"; };
 		02734F61245615E800E511CC /* Date+Utility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utility.swift"; sourceTree = "<group>"; };
 		02734F63245678BA00E511CC /* TimeInterval+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TimeInterval+Utilities.swift"; sourceTree = "<group>"; };
+		02734F74245A194000E511CC /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		02734F76245A1EE000E511CC /* ResponseMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseMessage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +135,7 @@
 			isa = PBXGroup;
 			children = (
 				02734F582453446100E511CC /* Location.swift */,
+				02734F76245A1EE000E511CC /* ResponseMessage.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -176,6 +181,7 @@
 			children = (
 				02734F5B24534EF300E511CC /* CoreManager.swift */,
 				02734F5D2454E92B00E511CC /* GeoCoder.swift */,
+				02734F74245A194000E511CC /* APIManager.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -285,6 +291,7 @@
 				02734F45245220B600E511CC /* MainViewController+TableView.swift in Sources */,
 				02734F1C2452165E00E511CC /* AppDelegate.swift in Sources */,
 				02734F1E2452165E00E511CC /* SceneDelegate.swift in Sources */,
+				02734F77245A1EE000E511CC /* ResponseMessage.swift in Sources */,
 				02734F64245678BA00E511CC /* TimeInterval+Utilities.swift in Sources */,
 				02734F62245615E800E511CC /* Date+Utility.swift in Sources */,
 				02734F5C24534EF300E511CC /* CoreManager.swift in Sources */,
@@ -293,6 +300,7 @@
 				02734F4324521F9C00E511CC /* RecordTableViewCell.swift in Sources */,
 				02734F4124521EA100E511CC /* MainViewController.swift in Sources */,
 				02734F602456143B00E511CC /* String+Utility.swift in Sources */,
+				02734F75245A194000E511CC /* APIManager.swift in Sources */,
 				02734F4F245335FC00E511CC /* MainViewController+LocationManager.swift in Sources */,
 				02734F572453445600E511CC /* LocationViewModel.swift in Sources */,
 			);

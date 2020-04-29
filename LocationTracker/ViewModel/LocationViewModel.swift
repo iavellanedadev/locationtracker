@@ -78,7 +78,6 @@ extension LocationViewModel {
     
     private func insertLocation() {
         guard let location = location else { return }
-        //TODO: Issue with escaping closure... data is not formatted
         
         print("did we hit?")
         if let lastLoc = lastLocation, let lastLat = Double(lastLoc.latitude), let lastLong = Double(lastLoc.longitude), let coordinates = coordinates {
