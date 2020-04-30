@@ -24,10 +24,8 @@ class LocationViewModel {
     }
     var location: Location? {
         didSet {
-            guard let location = location,
-            let lat = Double(location.latitude),
-            let long = Double(location.longitude) else { return }
-            coordinates = CLLocation(latitude: lat, longitude: long)
+            guard let location = location else { return }
+            coordinates = CLLocation(latitude: location.latitude, longitude: location.longitude)
         }
     }
     
@@ -46,7 +44,7 @@ extension LocationViewModel{
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
         let date = dateFormatter.string(from: time)
         print("formatted location")
-        self.location = Location(fromDateTime: date, latitude: String(latitude), longitude: String(longitude), address: address, toDateTime: nil, timeSpent: nil)
+        self.location = Location(fromDateTime: date, latitude: latitude, longitude: longitude, address: address, toDateTime: "", timeSpent: 0.0)
         
         insertLocation()
     }
@@ -80,9 +78,9 @@ extension LocationViewModel {
         guard let location = location else { return }
         
         print("did we hit?")
-        if let lastLoc = lastLocation, let lastLat = Double(lastLoc.latitude), let lastLong = Double(lastLoc.longitude), let coordinates = coordinates {
+        if let lastLoc = lastLocation, let coordinates = coordinates {
             
-            let lastCoordinates = CLLocation(latitude: lastLat, longitude: lastLong)
+            let lastCoordinates = CLLocation(latitude: lastLoc.latitude, longitude: lastLoc.longitude)
             
             if getDistance(from: coordinates, to: lastCoordinates) > 100 {
                 //update location with toDateTime and timeSpent
