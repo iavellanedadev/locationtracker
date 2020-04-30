@@ -46,7 +46,7 @@ extension LocationViewModel{
         dateFormatter.dateFormat = "dd/MM/yyyy HH:mm:ss"
         let date = dateFormatter.string(from: time)
         print("formatted location")
-        self.location = Location(fromDateTime: date, latitude: String(latitude), longitude: String(longitude), address: address, locationName: "\(city), \(state) \(zip) (\(country))", toDateTime: nil, timeSpent: nil)
+        self.location = Location(fromDateTime: date, latitude: String(latitude), longitude: String(longitude), address: address, toDateTime: nil, timeSpent: nil)
         
         insertLocation()
     }

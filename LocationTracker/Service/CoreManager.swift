@@ -68,7 +68,6 @@ final class CoreManager {
         
         locationTrack.fromDateTime = location.fromDateTime.toDate()
         locationTrack.address = location.address
-        locationTrack.locationName = location.locationName
         locationTrack.longitude = location.longitude
         locationTrack.latitude = location.latitude
         print("saving the coredata")
@@ -114,7 +113,7 @@ final class CoreManager {
         if let core = fetchLastData() {
             guard let fromDateTime = core.fromDateTime, let longitude = core.longitude, let latitude = core.latitude, let address = core.address, let locationName = core.locationName, let toDateTime = core.toDateTime else { return location }
             
-            location = Location(fromDateTime: fromDateTime.toString() ?? "N/A", latitude: latitude, longitude: longitude, address: address, locationName: locationName, toDateTime: toDateTime.toString() ?? "", timeSpent: core.timeSpent)
+            location = Location(fromDateTime: fromDateTime.toString() ?? "N/A", latitude: latitude, longitude: longitude, address: address, toDateTime: toDateTime.toString() ?? "", timeSpent: core.timeSpent)
             print("it did stuff!")
             return location
         }
@@ -134,7 +133,7 @@ final class CoreManager {
             
                 guard let fromDateTime = core.fromDateTime, let longitude = core.longitude, let latitude = core.latitude, let address = core.address, let locationName = core.locationName, let toDateTime = core.toDateTime else { return locations }
                 
-                let location = Location(fromDateTime: fromDateTime.toString() ?? "N/A", latitude: latitude, longitude: longitude, address: address, locationName: locationName, toDateTime: toDateTime.toString() ?? "", timeSpent: core.timeSpent)
+                let location = Location(fromDateTime: fromDateTime.toString() ?? "N/A", latitude: latitude, longitude: longitude, address: address, toDateTime: toDateTime.toString() ?? "", timeSpent: core.timeSpent)
                 locations.append(location)
             }
             
