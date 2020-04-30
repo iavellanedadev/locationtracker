@@ -8,8 +8,14 @@
 
 import Foundation
 
-struct Payload {
+struct Payload : Codable {
     let appId: String
     let time: Date
     let locationData: Location
+    
+    private enum CodingKeys : String, CodingKey {
+        case appId
+        case time
+        case locationData = "empData"
+    }
 }

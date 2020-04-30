@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Location {
+struct Location : Codable {
     let fromDateTime: String
     let latitude: String
     let longitude: String
@@ -16,4 +16,15 @@ struct Location {
     let locationName: String
     let toDateTime: String?
     let timeSpent: Double?
+    
+    private enum CodingKeys : String, CodingKey {
+        case latitude = "positionx"
+        case longitude = "positiony"
+        case fromDateTime
+        case address
+        case locationName
+        case toDateTime
+        case timeSpent
+    }
+    
 }
